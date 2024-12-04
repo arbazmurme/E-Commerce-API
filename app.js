@@ -14,5 +14,5 @@ app.use("/api/auth", authRoutes);
 app.use((req, res) => res.send("<h1>Hello World!</h1>"));
 
 
-const PORT = process.env.POR || https://e-commerce-api-two-vert.vercel.app/;
+const PORT = process.env.POR || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
