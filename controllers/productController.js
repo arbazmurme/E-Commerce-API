@@ -54,25 +54,26 @@ exports.getProductsByCategory = async (req, res) => {
 
 // Add a new product
 exports.addProduct = async (req, res) => {
-  const { name, description, price, category, image, stock } = req.body;
-  console.log('addProduct');
+    const { name, description, price, category, stock } = req.body;
+    const image = req.file ? `/uploads/${req.file.filename}` : null; // Set the image path
   
-  try {
-    const product = new Product({
-      name,
-      description,
-      price,
-      category,
-      image,
-      stock,
-    });
-    await product.save();
-    res.status(201).json(product);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  }
-};
+    try {
+      const product = new Product({
+        name,
+        description,
+        price,
+        category,
+        image, // Save the image URL in the product document
+        stock,
+      });
+  
+      await product.save();
+      res.status(201).json(product);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: error.message });
+    }
+  };
 
 // Update an existing product
 exports.updateProduct = async (req, res) => {

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const path = require("path");
 
 dotenv.config();
 connectDB();
@@ -11,7 +12,7 @@ const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 app.use(express.json());
-app.use(express.json());
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve files in the uploads folder
 
 // Enable CORS
 app.use(
