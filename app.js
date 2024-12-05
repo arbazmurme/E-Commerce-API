@@ -7,6 +7,7 @@ dotenv.config();
 connectDB();
 
 const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 app.use(express.json());
@@ -17,11 +18,13 @@ app.use(
   cors({
     origin: ["http://localhost:3000", "https://your-frontend-deployment-url"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Include credentials if needed
+    credentials: true,
   })
 );
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+
 app.use((req, res) => res.send("<h1>Hello World!</h1>"));
 
 
