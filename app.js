@@ -29,5 +29,5 @@ app.use("/api/products", productRoutes);
 app.use((req, res) => res.send("<h1>Hello World!</h1>"));
 
 
-const PORT = process.env.POR || 3000;
+const PORT = process.env.POR || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

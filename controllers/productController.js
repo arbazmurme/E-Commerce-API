@@ -56,7 +56,7 @@ exports.getProductsByCategory = async (req, res) => {
 exports.addProduct = async (req, res) => {
     const { name, description, price, category, stock } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : null; // Set the image path
-  
+    
     try {
       const product = new Product({
         name,
