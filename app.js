@@ -17,7 +17,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve f
 // Enable CORS
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://your-frontend-deployment-url"],
+    origin: ["http://localhost:3000", "https://e-commerce-frontend-topaz-delta.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
