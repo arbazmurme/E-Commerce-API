@@ -99,15 +99,29 @@ exports.updateProduct = async (req, res) => {
 };
 
 // Delete a product
+
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
+
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    await product.remove();
-    res.json({ message: "Product deleted successfully" });
+    if (product.image) {
+      const imagePath = path.join(__dirname, "../uploads", product.image); // Adjust the path based on your setup
+      fs.unlink(imagePath, (err) => {
+        if (err) {
+          console.error("Error deleting image:", err);
+        } else {
+          console.log("Image deleted:", imagePath);
+        }
+      });
+    }
+
+    await product.deleteOne();
+
+    res.json({ message: "Product and associated image deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
