@@ -18,7 +18,7 @@ This is the backend API for the **AZ Shop** e-commerce platform. It is built wit
 
 ## Demo
 
-Check out the live demo: [AZ Shop Frontend](https://e-commerce-api-ten-sable.vercel.app/api/products)
+Check out the live demo: [AZ Shop Api](https://e-commerce-api-ten-sable.vercel.app/api/products)
 
 ## API Endpoints
 
